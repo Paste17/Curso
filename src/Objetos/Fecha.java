@@ -5,17 +5,35 @@
  */
 package Objetos;
 
-import java.util.Date;
+import java.time.*;
+import java.util.*;
 
 /**
  *
  * @author Esteban Pastelín
  */
-public class Fecha {
+public class Fecha implements Comparable<Fecha> {
     
     private Integer dia;
     private Integer mes;
-    private Integer anio;
+    private Integer anio;   
+    private Object LocalDate;
+    
+     public void prueba (int ...x){
+        for (int i = 0; i < x.length; i++) {
+            System.out.println(x[i]);            
+        }
+    }
+    
+    private static HashSet<Fecha> diasInhabiles = new  HashSet<>();
+    
+    public static void agregarDiaInhabil(Fecha fecha){
+        diasInhabiles.add(fecha);
+    }
+    
+    public static boolean isDiaInhabil(Fecha fecha){
+        return diasInhabiles.contains(fecha);
+    }
     
     public Fecha(Integer dia, Integer mes, Integer anio){
         this.dia = dia;
@@ -23,15 +41,50 @@ public class Fecha {
         this.anio = anio;
     }
     
-    public Fecha(){
-        Date date = new Date();
-        dia= date.getDay()+1;
-        mes = date.getMonth()+1;
-        anio = date.getYear()+1900;
+    public Fecha() {
+        LocalDate date = LocalDate.now();
+        dia = date.getDayOfMonth();
+        mes = date.getMonthValue();
+        anio = date.getYear();
     }
     
+    public DayOfWeek diaSemana(){
+        LocalDate dateTemporal = LocalDate.of(anio, mes, dia);
+        return dateTemporal.getDayOfWeek();
+    } 
+    
     public String toString(){
-        return String.format("%d/%d/%d", dia, mes, anio);
+        return String.format("%02d/%02d/%d", dia, mes, anio);
+    }  
+        
+    @Override
+    public int compareTo(Fecha fechita){
+        int resultado = this.anio - fechita.anio;
+        if (resultado == 0) {
+            resultado = this.mes - fechita.mes;
+            if (resultado == 0) {
+                resultado = this.dia - fechita.dia;
+            }
+        }
+        return resultado;
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Fecha) {
+            Fecha fechita = (Fecha) obj;
+            return this.compareTo(fechita) == 0;
+        }
+        return false;
+    }
+    
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 71 * hash + Objects.hashCode(this.dia);
+        hash = 71 * hash + Objects.hashCode(this.mes);
+        hash = 71 * hash + Objects.hashCode(this.anio);
+        return hash;
     }
     
     public boolean fechaValida(){
@@ -83,6 +136,25 @@ public class Fecha {
         }
     }
     
+      public void incrementarDiaHabil() {
+        do {
+            adelantar();
+        } while (isDiaInhabil(this));
+    }
+    
+   
+    public void incrementarDiaHabil(DayOfWeek ...days) {        
+        boolean bandera = false;
+        do {
+            bandera = false;
+            adelantar();
+            for (int i = 0; i < days.length; i++) {
+                if (days[i] == this.diaSemana()){
+                    bandera = true;
+                }
+            }
+        } while (isDiaInhabil(this) || bandera);
+    }
       public void retrasar(){
         this.dia--;
         if(this.dia<1){
@@ -101,6 +173,21 @@ public class Fecha {
         }
     }
    
+       
+    public void diaSemana(){
+        Calendar c = Calendar.getInstance();
+        String[] days = new String[]{
+            "Domingo",
+            "Lunes",
+            "Martes",
+            "Miércoles",
+            "Jueves",
+            "Viernes",
+            "Sábado",
+            "Domingo",
+        };
+        System.out.println("El dia es: " + days[c.get(Calendar.DAY_OF_WEEK)-1]);
+    }
 
     public Integer getDia() {
         return dia;
@@ -125,8 +212,6 @@ public class Fecha {
     public void setAnio(Integer anio) {
         this.anio = anio;
     }
-    
-    
-    
+
     
 }

@@ -5,19 +5,23 @@
  */
 package Modelo;
 
+import Objetos.Fecha;
+import Objetos.RFC;
+import Objetos.Regimen;
 import java.util.HashSet;
 
 /**
  *
  * @author Esteban Pastelín
  */
-public class Persona {
+public abstract class Persona {
     
     private RFC rfc;
     private HashSet<Direccion> direcciones;
     private String telefono;
     private Fecha fechaInscripcion;
     private Fecha inicioOperaciones;
-    private Regimen regimenes;
+    private HashSet<Regimen> regimenes;
+    
     
 }

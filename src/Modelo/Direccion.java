@@ -5,6 +5,8 @@
  */
 package Modelo;
 
+import Objetos.TipoDireccion;
+
 /**
  *
  * @author Esteban Pastelín
@@ -27,16 +29,16 @@ public class Direccion {
         this.cp = cp;
         this.municipio = municipio;
     }
-
-    public boolean validar(){
-        if (!cp.matches("^[0-9]{5}$")) {
-            throw new 
-        }
-        boolean resultado = true;
-        resultado = resultado && cp.matches("^[0-9]{5}$");
-        resultado = resultado && calle.matches("[A-Z .]*$");
-        return resultado;
-    }
+//
+//    public boolean validar(){
+//        if (!cp.matches("^[0-9]{5}$")) {
+//            throw new 
+//        }
+//        boolean resultado = true;
+//        resultado = resultado && cp.matches("^[0-9]{5}$");
+//        resultado = resultado && calle.matches("[A-Z .]*$");
+//        return resultado;
+//    }
 
 
 

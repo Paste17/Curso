@@ -16,4 +16,5 @@ public enum Regimen {
     IEPS,
     INCORPORACION,
     HOSPEDAJE; 
+    
 }

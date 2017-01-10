@@ -9,6 +9,10 @@ package Objetos;
  *
  * @author Esteban Pastelín
  */
-public class TipoDireccion {
+public enum TipoDireccion {
+    
+    FISICA,
+    FISCAL,
+    MORAL;
     
 }

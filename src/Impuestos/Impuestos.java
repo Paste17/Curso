@@ -5,8 +5,17 @@
  */
 package Impuestos;
 
+import Excepciones.DireccionException;
+import Modelo.Direccion;
+import Modelo.Obligaciones.Cedular;
+import Modelo.Obligaciones.Ieps;
+import Modelo.Obligaciones.Incorporacion;
+import Modelo.Obligaciones.Obligacion;
 import Objetos.Fecha;
+import Objetos.Periodicidad;
 import Objetos.Regimen;
+import Objetos.TipoDireccion;
+import Objetos.TipoPeriodo;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -15,42 +24,43 @@ import java.util.HashSet;
  * @author Esteban Pastelín
  */
 public class Impuestos {
-    
-    public static void main(String[] args) {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) throws DireccionException {
         
-//        Fecha f = new Fecha(1,3,2016);
-//        System.out.println(f);
-//        System.out.println(f.fechaValida());
+//        Direccion direccion1 = new Direccion(TipoDireccion.FISICA, "reforme", "405", "1", "Centro", "68050", "Oaxaca");
+//        Direccion direccion2 = new Direccion(TipoDireccion.SUCURSAL, "reforme", "405", "1", "Centro", "68050", "Oaxaca");
+//        Direccion direccion3 = new Direccion(TipoDireccion.SUCURSAL, "reforme", "405", "1", "Centro", "68050", "Oaxaca");
 //        
-//        Fecha f2 = new Fecha(17,04,1994);
-//        System.out.println(f.compareTo(f2) + " años");
+//        HashSet<Direccion> direcciones = new HashSet<>();
 //        
-//        f.adelantarn(1);               
-//        System.out.println(f);
+//        direcciones.add(direccion1);
+//        direcciones.add(direccion2);
+//        direcciones.add(direccion3);
 //        
-//        f.retrasarn(2);
-//        System.out.println(f);
 //        
-//        System.out.println("----------------------------");
-//        
-//        ArrayList<Fecha> fechasInhabiles = new ArrayList<Fecha>();
-//        fechasInhabiles.add(new Fecha(1,1,2017));
-//        fechasInhabiles.add(new Fecha(5,2,2017));
-//        
-//        for(Fecha fechasInhabile : fechasInhabiles){
-//            System.out.println(fechasInhabile);
-//      }       
-//        HashSet<Regimen> regimenes = new HashSet<>();
-//        regimenes.add(Regimen.IEPS);
-//        regimenes.add(Regimen.CEDULAR);
-//        regimenes.add(Regimen.INCORPORACION);
-//        
-//        for (Regimen regimene : regimenes) {
-//            System.out.println(regimene);
+//        for (Direccion direccione : direcciones) {
+//            System.out.println(direccione);
 //        }
 //        
+//        long ii = direcciones.stream().filter(p-> p.getTipo() == TipoDireccion.FISICA).count();
+//        System.out.println(ii);
+    ArrayList<Obligacion> arreglo = new ArrayList<>();
+    
+    Obligacion ob = new Cedular();
+    arreglo.add(ob);
+    arreglo.add(new Ieps());
+    arreglo.add(new Incorporacion());
+    arreglo.add(new Cedular());
+    
+        for (int i = 0; i < arreglo.size(); i++) {
+            arreglo.get(i).metodoPrueba();
+        }
         
-        
-        
+        TipoPeriodo p = TipoPeriodo.getPeriodo(Periodicidad.MENSUAL, new Fecha(1,2,2016) );
+    
     }
+    
 }

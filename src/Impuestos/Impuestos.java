@@ -40,14 +40,17 @@ public class Impuestos {
 //        for(Fecha fechasInhabile : fechasInhabiles){
 //            System.out.println(fechasInhabile);
 //      }       
-        HashSet<Regimen> regimenes = new HashSet<>();
-        regimenes.add(Regimen.IEPS);
-        regimenes.add(Regimen.CEDULAR);
-        regimenes.add(Regimen.INCORPORACION);
+//        HashSet<Regimen> regimenes = new HashSet<>();
+//        regimenes.add(Regimen.IEPS);
+//        regimenes.add(Regimen.CEDULAR);
+//        regimenes.add(Regimen.INCORPORACION);
+//        
+//        for (Regimen regimene : regimenes) {
+//            System.out.println(regimene);
+//        }
+//        
         
-        for (Regimen regimene : regimenes) {
-            System.out.println(regimene);
-        }
+        
         
     }
 }

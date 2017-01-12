@@ -3,16 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Objetos;
+package Excepciones;
 
 /**
  *
  * @author Esteban Pastelín
  */
-public enum TipoDireccion {
-    
-    FISICA,
-    FISCAL,
-    SUCURSAL;
+public class RegimenIncompatibleException extends Exception {
+
+    public RegimenIncompatibleException() {
+    }
     
 }

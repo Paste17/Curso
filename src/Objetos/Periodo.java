@@ -5,6 +5,8 @@
  */
 package Objetos;
 
+import java.time.DayOfWeek;
+
 /**
  *
  * @author Esteban Pastelín
@@ -12,15 +14,31 @@ package Objetos;
 public class Periodo {
     
     private TipoPeriodo tipoPeriodo;
-    private Periodicidad periodicidad;
+    private Integer ejercicio;
     private Fecha fechaLimitePago;
     
-    public Periodo(Periodicidad p, TipoPeriodo tp){
-        periodicidad = p;
+    public Periodo(TipoPeriodo tp, Integer ejercicio){
         tipoPeriodo = tp;
-    }    
+        this.ejercicio = ejercicio;
+    }
+    
+    private Fecha fechaCero(){
+        tipoPeriodo.getMesFinal();
+        Fecha f = new Fecha(17,tipoPeriodo.getMesFinal() + 1, ejercicio);
+        f.incrementarDiaHabil(DayOfWeek.SATURDAY, DayOfWeek.SUNDAY);
+        return f;
+    }
+    
+    public Fecha fechaLimite(Integer diasAdicionales){
+        Fecha cero = fechaCero();
+        for (int i = 0; i < diasAdicionales; i++) {
+            cero.incrementarDiaHabil(DayOfWeek.FRIDAY, DayOfWeek.SATURDAY, DayOfWeek.SUNDAY);
+        }
+        return cero;
+    }
     
     private void setFechaLimite(){
         
     }
+    
 }

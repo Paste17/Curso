@@ -11,6 +11,8 @@ package Modelo.Obligaciones;
  */
 public interface Obligacion {
     
-    public void metodoPrueba();
+    public Float calculoImpuesto();
+    public Float calculaRecargos();
+    public Float totalPagar();
     
 }

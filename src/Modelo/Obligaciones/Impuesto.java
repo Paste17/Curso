@@ -5,19 +5,21 @@
  */
 package Modelo.Obligaciones;
 
+import Objetos.Periodo;
+import Objetos.Regimen;
+
 /**
  *
  * @author Esteban Pastelín
  */
-public class Cedular extends Impuesto{
+public abstract class Impuesto implements Obligacion{
     
-    public Float calculaRecargos(){
-        return (float)2.0;
-    }
+    private Periodo periodo;
+    private Regimen regimen;
     
     @Override
-    public Float totalPagar() {
-        return (float)1.0;
+    public Float calculoImpuesto(){
+        return totalPagar() + calculaRecargos();
     }
     
 }

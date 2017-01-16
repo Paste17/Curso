@@ -36,7 +36,7 @@ public class Fecha implements Comparable<Fecha> {
         diasInhabiles.add(fecha);
     }
 
-    public static boolean isDiaInabil(Fecha fecha) {
+    public static boolean isDiaInhabil(Fecha fecha) {
         return diasInhabiles.contains(fecha);
     }
 
@@ -107,7 +107,7 @@ public class Fecha implements Comparable<Fecha> {
     public void incrementarDiaHabil() {
         do {
             incrementar();
-        } while (isDiaInabil(this));
+        } while (isDiaInhabil(this));
     }
     
    
@@ -121,7 +121,7 @@ public class Fecha implements Comparable<Fecha> {
                     bandera = true;
                 }
             }
-        } while (isDiaInabil(this) || bandera);
+        } while (isDiaInhabil(this) || bandera);
     }
     
 

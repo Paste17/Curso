@@ -9,11 +9,6 @@ package Modelo.Obligaciones;
  *
  * @author Esteban Pastelín
  */
-public class Incorporacion implements Obligacion{
-    
-        @Override
-    public void metodoPrueba(){
-            System.out.println("INCORPORACION");
-}
+public class Incorporacion {
     
 }

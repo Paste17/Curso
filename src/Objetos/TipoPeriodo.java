@@ -78,12 +78,12 @@ public enum TipoPeriodo {
         TipoPeriodo tp[] = TipoPeriodo.values();
         for (TipoPeriodo tipoPeriodo : tp) {
             if (tipoPeriodo.getPeriodicidad() == p) {
-                if (tipoPeriodo.getMesInicial() <= f.getMes()) && 
-                    (tipoPeriodo.getMesFinal(){
-                    
+                if (tipoPeriodo.getMesInicial() <= f.getMes() &&
+                        tipoPeriodo.getMesFinal() >= f.getMes()){
+                    return tipoPeriodo;
                 }
             }
-            System.out.println(tipoPeriodo);
         }
+        return resultado;
     }
 }

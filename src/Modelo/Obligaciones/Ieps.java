@@ -9,11 +9,8 @@ package Modelo.Obligaciones;
  *
  * @author Esteban Pastelín
  */
-public class Ieps implements Obligacion{
+public class Ieps {
     
-    @Override
-    public void metodoPrueba(){
-            System.out.println("IEPS");
-}
+ 
     
 }

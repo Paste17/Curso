@@ -13,6 +13,7 @@ import Modelo.Obligaciones.Incorporacion;
 import Modelo.Obligaciones.Obligacion;
 import Objetos.Fecha;
 import Objetos.Periodicidad;
+import Objetos.Periodo;
 import Objetos.Regimen;
 import Objetos.TipoDireccion;
 import Objetos.TipoPeriodo;
@@ -47,20 +48,30 @@ public class Impuestos {
 //        
 //        long ii = direcciones.stream().filter(p-> p.getTipo() == TipoDireccion.FISICA).count();
 //        System.out.println(ii);
-    ArrayList<Obligacion> arreglo = new ArrayList<>();
-    
-    Obligacion ob = new Cedular();
-    arreglo.add(ob);
-    arreglo.add(new Ieps());
-    arreglo.add(new Incorporacion());
-    arreglo.add(new Cedular());
-    
-        for (int i = 0; i < arreglo.size(); i++) {
-            arreglo.get(i).metodoPrueba();
-        }
+//    ArrayList<Obligacion> arreglo = new ArrayList<>();
+//    
+//    Obligacion ob = new Cedular();
+//    arreglo.add(ob);
+//    arreglo.add(new Ieps());
+//    arreglo.add(new Incorporacion());
+//    arreglo.add(new Cedular());
+//    
+////        for (int i = 0; i < arreglo.size(); i++) {
+////            arreglo.get(i).metodoPrueba();
+////        }
+//        
+//        //TipoPeriodo p = TipoPeriodo.getPeriodo(Periodicidad.MENSUAL, new Fecha(1,2,2016) );
+//        Periodo per = new Periodo(TipoPeriodo.ENE_FEB_MAR,1);
+//        System.out.println(per);
+
+
+        Cedular cedular = new Cedular();
         
-        TipoPeriodo p = TipoPeriodo.getPeriodo(Periodicidad.MENSUAL, new Fecha(1,2,2016) );
-    
+        Float f = cedular.calculoImpuesto();
+        
+        System.out.println(f);
+        
+
     }
     
 }

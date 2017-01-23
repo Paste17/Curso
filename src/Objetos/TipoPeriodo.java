@@ -36,12 +36,11 @@ public enum TipoPeriodo {
     
     private Periodicidad periodicidad;
     private Integer mesInicial;
-    private Integer mesFinal;
+    private Integer mesFinal;    
     
     private TipoPeriodo(Periodicidad periodicidad,
-        Integer mesIni,
-        Integer mesFin){
-        
+            Integer mesIni,
+            Integer mesFin ){
         this.periodicidad = periodicidad;
         this.mesInicial = mesIni;
         this.mesFinal = mesFin;
@@ -51,39 +50,40 @@ public enum TipoPeriodo {
         return periodicidad;
     }
 
-    public void setPeriodicidad(Periodicidad periodicidad) {
-        this.periodicidad = periodicidad;
-    }
-
     public Integer getMesInicial() {
         return mesInicial;
-    }
-
-    public void setMesInicial(Integer mesInicial) {
-        this.mesInicial = mesInicial;
     }
 
     public Integer getMesFinal() {
         return mesFinal;
     }
-
-    public void setMesFinal(Integer mesFinal) {
-        this.mesFinal = mesFinal;
-    }
     
-    
-    public TipoPeriodo getPeriodo(Periodicidad p, Fecha f) {
-    
+    public TipoPeriodo next(){
         TipoPeriodo resultado = null;
         TipoPeriodo tp[] = TipoPeriodo.values();
         for (TipoPeriodo tipoPeriodo : tp) {
-            if (tipoPeriodo.getPeriodicidad() == p) {
-                if (tipoPeriodo.getMesInicial() <= f.getMes() &&
-                        tipoPeriodo.getMesFinal() >= f.getMes()){
+            if (tipoPeriodo.getPeriodicidad() == this.getPeriodicidad() ){
+                if (tipoPeriodo.getMesInicial() == this.getMesFinal()+1){
+                    return tipoPeriodo;
+                }
+            }
+        }
+        return resultado;        
+    }
+    
+    public static TipoPeriodo getPeriodo(Periodicidad p, Fecha f){
+        TipoPeriodo resultado = null;
+        TipoPeriodo tp[] = TipoPeriodo.values();
+        for (TipoPeriodo tipoPeriodo : tp) {
+            if (tipoPeriodo.getPeriodicidad() == p ){
+                if ((tipoPeriodo.getMesInicial() <= f.getMes())&&
+                        (tipoPeriodo.getMesFinal() >= f.getMes())){
                     return tipoPeriodo;
                 }
             }
         }
         return resultado;
     }
+    
+    
 }

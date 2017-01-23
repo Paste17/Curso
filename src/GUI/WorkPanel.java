@@ -3,19 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo.Obligaciones;
+package GUI;
 
-import Objetos.Periodo;
-import Objetos.Regimen;
+import java.awt.Color;
+import javax.swing.JPanel;
 
 /**
  *
  * @author Esteban Pastelín
  */
-public class Intermedio extends General{
+public class WorkPanel extends JPanel{
     
-     public Intermedio(Periodo per) {
-        super(Regimen.INTERMEDIO, per);
+    public WorkPanel(){
+        setBackground(Color.BLUE);
     }
     
 }

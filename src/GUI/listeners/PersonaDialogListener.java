@@ -3,19 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo.Obligaciones;
+package GUI.listeners;
 
-import Objetos.Periodo;
-import Objetos.Regimen;
+import Modelo.Persona;
 
 /**
  *
  * @author Esteban Pastelín
  */
-public class Intermedio extends General{
-    
-     public Intermedio(Periodo per) {
-        super(Regimen.INTERMEDIO, per);
-    }
-    
+public interface PersonaDialogListener {
+
+    public void aceptarButtonClick(Persona persona);
+
 }

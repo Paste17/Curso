@@ -5,19 +5,27 @@
  */
 package Modelo.Obligaciones;
 
+import Objetos.Periodo;
+import Objetos.Regimen;
+
 /**
  *
  * @author Esteban Pastelín
  */
 public class Cedular extends Impuesto{
     
-    public Float calculaRecargos(){
-        return (float)2.0;
-    }
-    
+    private Float totalCasaHabitacion;
+    private Float totalLocalComercial;
+
+    public Cedular(Periodo per){
+        super(Regimen.CEDULAR, per);
+    }    
+   
     @Override
     public Float totalPagar() {
-        return (float)1.0;
+        Float total = totalCasaHabitacion * (float)0.10 + totalLocalComercial * (float)0.25;
+        Float iva = (totalCasaHabitacion + totalLocalComercial) * (float)0.16;
+        return total + iva;
     }
-    
+
 }
